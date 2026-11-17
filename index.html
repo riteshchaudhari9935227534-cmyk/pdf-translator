@@ -1,0 +1,32 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Free PDF Translator</title>
+<style>
+*{box-sizing:border-box}body{margin:0;background:#f3f6fb;color:#172033;font-family:Arial,sans-serif}
+main{max-width:620px;margin:35px auto;padding:18px}.panel{background:white;border-radius:18px;padding:26px;box-shadow:0 8px 28px #15294a14}
+h1{margin:0 0 8px;color:#173b78}p{color:#526078;line-height:1.5}
+label{display:block;font-weight:700;margin:18px 0 8px}
+input,select,button{width:100%;padding:13px;border:1px solid #cbd5e1;border-radius:10px;font-size:16px}
+button{margin-top:22px;background:#1d4ed8;color:white;border:0;font-weight:700;cursor:pointer}
+.note{background:#eff6ff;padding:12px;border-radius:10px;font-size:13px}
+.flash{background:#fff1f2;color:#9f1239;padding:12px;border-radius:10px;margin:12px 0}
+</style>
+</head>
+<body><main><section class="panel">
+<h1>PDF Translator</h1>
+<p>Translate English PDF to Hindi or Hindi PDF to English.</p>
+{% with messages = get_flashed_messages() %}{% for message in messages %}<div class="flash">{{ message }}</div>{% endfor %}{% endwith %}
+<form method="post" enctype="multipart/form-data">
+<label for="pdf">Choose PDF (up to 150 pages)</label>
+<input id="pdf" name="pdf" type="file" accept="application/pdf" required>
+<label for="source">PDF's current language</label>
+<select id="source" name="source"><option value="en">English</option><option value="hi">Hindi</option></select>
+<label for="target">Translate into</label>
+<select id="target" name="target"><option value="hi">Hindi</option><option value="en">English</option></select>
+<button type="submit">Translate PDF</button>
+</form>
+<p class="note"><b>Important:</b> This starter supports up to 150 pages of selectable text. Scanned/image-only PDFs need OCR. The translation service may have usage limits or downtime; unlimited free use cannot be guaranteed. The output recreates text pages and may not preserve the original layout, images, or tables.</p>
+</section></main></body></html>
